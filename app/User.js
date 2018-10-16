@@ -7,18 +7,20 @@ import { type UserQueryResponse } from "./__generated__/UserQuery.graphql";
 
 import environment from "./environment";
 
+const query = graphql`
+  query UserQuery {
+    user {
+      name
+    }
+  }
+`;
+
 export default class User extends React.Component<{||}> {
   render() {
     return (
       <QueryRenderer
         environment={environment}
-        query={graphql`
-          query UserQuery {
-            user {
-              name
-            }
-          }
-        `}
+        query={query}
         variables={{}}
         render={({
           error,
