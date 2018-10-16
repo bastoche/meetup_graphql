@@ -6,3 +6,4 @@ extends:
   - eslint:recommended
   - plugin:flowtype/recommended
   - plugin:prettier/recommended
+  - plugin:react/recommended
