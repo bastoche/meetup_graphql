@@ -1,0 +1,36 @@
+{
+  "name": "graphql_meetup",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/node": "^7.0.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-flow": "^7.0.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.7.0",
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-plugin-flowtype": "^3.0.0",
+    "eslint-plugin-prettier": "^3.0.0",
+    "flow-bin": "^0.83.0",
+    "flow-typed": "^2.5.1",
+    "nodemon": "^1.18.4",
+    "prettier": "^1.14.3",
+    "relay-compiler": "^1.6.2"
+  },
+  "scripts": {
+    "lint": "eslint api scripts --fix",
+    "start:api": "nodemon --watch api --exec babel-node api/index.js ",
+    "relay": "relay-compiler --src ./app --schema ./schema.graphql",
+    "update-schema": "babel-node ./scripts/updateSchema.js",
+    "validate": "yarn lint && yarn flow"
+  },
+  "dependencies": {
+    "express": "^4.16.4",
+    "express-graphql": "^0.6.12",
+    "graphql": "^14.0.2",
+    "graphql-relay": "^0.5.5"
+  }
+}
