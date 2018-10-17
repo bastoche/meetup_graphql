@@ -8,9 +8,12 @@ import { type UserQueryResponse } from "./__generated__/UserQuery.graphql";
 import environment from "./environment";
 
 const query = graphql`
-  query UserQuery {
+  query UserQuery($withAddress: Boolean!) {
     user {
       first_name: name
+      address @include(if: $withAddress) {
+        zip
+      }
     }
   }
 `;
@@ -21,7 +24,7 @@ export default class User extends React.Component<{||}> {
       <QueryRenderer
         environment={environment}
         query={query}
-        variables={{}}
+        variables={{ withAddress: false }}
         render={({
           error,
           props
@@ -38,6 +41,9 @@ export default class User extends React.Component<{||}> {
           return (
             <div>
               <div>User: {props.user.first_name}</div>
+              {props.user.address ? (
+                <div>Zip: {props.user.address.zip}</div>
+              ) : null}
             </div>
           );
         }}
