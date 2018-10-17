@@ -10,7 +10,7 @@ import environment from "./environment";
 const query = graphql`
   query UserQuery {
     user {
-      name
+      first_name: name
     }
   }
 `;
@@ -37,7 +37,7 @@ export default class User extends React.Component<{||}> {
           }
           return (
             <div>
-              <div>User: {props.user.name}</div>
+              <div>User: {props.user.first_name}</div>
             </div>
           );
         }}
